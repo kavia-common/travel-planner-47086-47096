@@ -7,6 +7,7 @@ import RemindersPanel from './components/reminders/RemindersPanel';
 import Toasts from './components/reminders/Toasts';
 import { ReminderService } from './services/ReminderService';
 import LanguageHelper from './components/language/LanguageHelper';
+import CurrencyConverterPanel from './components/currency/CurrencyConverterPanel';
 
 // PUBLIC_INTERFACE
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [remindersOpen, setRemindersOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
 
   // Effect to apply theme to document element
   useEffect(() => {
@@ -84,6 +86,14 @@ function App() {
                   <button
                     type="button"
                     className="btn-secondary"
+                    onClick={() => setCurrencyOpen(true)}
+                    title="Open currency converter"
+                  >
+                    💱 Currency
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-secondary"
                     onClick={() => setRemindersOpen((v) => !v)}
                     title="Open reminders"
                   >
@@ -108,6 +118,7 @@ function App() {
           onOpenLanguage={() => setLanguageOpen(true)}
         />
         <LanguageHelper open={languageOpen} onClose={() => setLanguageOpen(false)} />
+        <CurrencyConverterPanel open={currencyOpen} onClose={() => setCurrencyOpen(false)} />
         <Toasts items={toasts} onDismiss={dismissToast} />
       </div>
     </BrowserRouter>

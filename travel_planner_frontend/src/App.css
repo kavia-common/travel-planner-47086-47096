@@ -249,6 +249,12 @@
   color: var(--text);
 }
 
+/* Currency panel small refinements */
+.currency-panel .rate-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 /* Reminders panel scroll tweaks */
 .reminders-panel::-webkit-scrollbar {
   width: 10px;
