@@ -3,19 +3,50 @@ import './App.css';
 import TripsList from './components/TripsList';
 import ItineraryBuilder from './components/itinerary/ItineraryBuilder';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import RemindersPanel from './components/reminders/RemindersPanel';
+import Toasts from './components/reminders/Toasts';
+import { ReminderService } from './services/ReminderService';
 
 // PUBLIC_INTERFACE
 function App() {
   const [theme, setTheme] = useState('light');
+  const [remindersOpen, setRemindersOpen] = useState(false);
+  const [toasts, setToasts] = useState([]);
 
   // Effect to apply theme to document element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  // Subscribe to ReminderService toast events
+  useEffect(() => {
+    const unsub = ReminderService.subscribe((evt) => {
+      const prefix =
+        evt.type === 'flight'
+          ? '✈️ Flight'
+          : evt.type === 'checkin'
+          ? '🏨 Check-in'
+          : evt.type === 'activity'
+          ? '📌 Activity'
+          : '⏰ Reminder';
+      const toast = {
+        id: `${evt.id}-${Date.now()}`, // unique toast id
+        title: evt.title,
+        subtitle: `When: ${evt.displayTime}`,
+        prefix,
+      };
+      setToasts((prev) => [toast, ...prev].slice(0, 5));
+    });
+    return () => unsub?.();
+  }, []);
+
   // PUBLIC_INTERFACE
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+
+  const dismissToast = (id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
   return (
@@ -39,6 +70,16 @@ function App() {
                   </Link>
                 </h1>
                 <p className="trips-subtitle">Plan trips with Ocean Professional theme</p>
+                <div>
+                  <button
+                    type="button"
+                    className="btn-secondary"
+                    onClick={() => setRemindersOpen((v) => !v)}
+                    title="Open reminders"
+                  >
+                    🔔 Reminders
+                  </button>
+                </div>
               </div>
             </div>
           </nav>
@@ -50,6 +91,9 @@ function App() {
             </Routes>
           </main>
         </header>
+
+        <RemindersPanel open={remindersOpen} onClose={() => setRemindersOpen(false)} />
+        <Toasts items={toasts} onDismiss={dismissToast} />
       </div>
     </BrowserRouter>
   );

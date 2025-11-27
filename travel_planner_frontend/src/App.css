@@ -231,6 +231,36 @@
   background: rgba(37, 99, 235, 0.06);
 }
 
+/* Small button variant (used in toasts, activity actions) */
+.btn-secondary.small {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* Toast card (inline notifications) */
+.toast-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 10px 12px;
+  color: var(--text);
+}
+
+/* Reminders panel scroll tweaks */
+.reminders-panel::-webkit-scrollbar {
+  width: 10px;
+}
+.reminders-panel::-webkit-scrollbar-thumb {
+  background: rgba(17,24,39,0.15);
+  border-radius: 999px;
+}
+.reminders-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .trips-cta {
   margin-top: 20px;
   display: flex;

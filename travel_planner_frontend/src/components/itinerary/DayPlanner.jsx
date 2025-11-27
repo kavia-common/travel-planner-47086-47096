@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import ActivityForm from './ActivityForm';
+import { ReminderService } from '../../services/ReminderService';
 
 /**
  * PUBLIC_INTERFACE
@@ -9,6 +10,7 @@ import ActivityForm from './ActivityForm';
  * - Edit an existing activity
  * - Remove activity
  * - Reorder activities (move up/down)
+ * - Quick add reminder from an activity (prefill title and time)
  */
 function DayPlanner({ dayIndex, dateLabel, activities, onChange }) {
   const [mode, setMode] = useState(null); // 'add' | 'edit'
@@ -48,6 +50,41 @@ function DayPlanner({ dayIndex, dateLabel, activities, onChange }) {
     // fix order
     const reordered = copy.map((a, idx) => ({ ...a, order: idx }));
     onChange?.(reordered);
+  };
+
+  const addReminderForActivity = (a) => {
+    // Build datetime from today's date with activity.startTime if available
+    if (!a?.title) return;
+    const now = new Date();
+    let dtISO = null;
+    if (a.startTime) {
+      const yyyy = String(now.getFullYear()).padStart(4, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const time = a.startTime.length === 5 ? `${a.startTime}:00` : a.startTime;
+      const local = new Date(`${yyyy}-${mm}-${dd}T${time}`);
+      if (!Number.isNaN(local.getTime())) {
+        dtISO = local.toISOString();
+      }
+    }
+    // If no time, set 2 hours from now as a sensible default
+    if (!dtISO) {
+      const def = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      dtISO = def.toISOString();
+    }
+
+    const payload = {
+      type: 'activity',
+      title: a.title,
+      datetimeISO: dtISO,
+      offsetMinutes: 15,
+      notes: a.notes || '',
+      relatedIds: { activityId: a.id },
+    };
+    ReminderService.save(payload);
+    // Optionally inform user via a transient alert toast triggered by service tick soon
+    // No navigation; stay inline
+    alert('Reminder added for activity. You will be notified before it starts.');
   };
 
   return (
@@ -128,6 +165,14 @@ function DayPlanner({ dayIndex, dateLabel, activities, onChange }) {
                     onClick={() => handleRemove(a.id)}
                   >
                     Remove
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-secondary"
+                    title="Add reminder"
+                    onClick={() => addReminderForActivity(a)}
+                  >
+                    🔔 Reminder
                   </button>
                 </div>
               </li>
