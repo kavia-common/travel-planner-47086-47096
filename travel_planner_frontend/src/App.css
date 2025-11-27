@@ -1,28 +1,47 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
+  /* Ocean Professional theme */
+  --primary: #2563EB; /* blue-600 */
+  --secondary: #F59E0B; /* amber-500 */
+  --background: #f9fafb; /* gray-50 */
+  --surface: #ffffff; /* white */
+  --text: #111827; /* gray-900 */
+
+  /* Component tokens */
+  --ring: rgba(37, 99, 235, 0.25);
+  --border-color: #e5e7eb; /* gray-200 */
+  --muted: #6b7280; /* gray-500 */
+  --shadow: 0 10px 15px -3px rgba(17,24,39,0.1), 0 4px 6px -4px rgba(17,24,39,0.1);
+
+  /* Legacy mappings kept for existing elements */
+  --bg-primary: var(--background);
+  --bg-secondary: #eef2ff;
+  --text-primary: var(--text);
+  --text-secondary: var(--primary);
+  --button-bg: var(--primary);
   --button-text: #ffffff;
 }
 
 [data-theme="dark"] {
   /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
+  --background: #0b1220;
+  --surface: #0f172a;
+  --text: #e5e7eb;
+  --border-color: #1f2937;
+  --primary: #3b82f6;
+  --secondary: #f59e0b;
+
+  /* Legacy mappings */
+  --bg-primary: var(--background);
+  --bg-secondary: #0f172a;
+  --text-primary: var(--text);
+  --text-secondary: var(--primary);
+  --button-bg: var(--primary);
   --button-text: #ffffff;
 }
 
 .App {
-  text-align: center;
+  text-align: left;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -41,16 +60,18 @@
 }
 
 .App-header {
-  background-color: var(--bg-secondary);
+  background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(249,250,251,1));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: stretch;
+  justify-content: flex-start;
+  font-size: 16px;
   color: var(--text-primary);
   transition: background-color 0.3s ease;
   position: relative;
+  padding: 72px 24px 40px;
+  box-sizing: border-box;
 }
 
 .App-link {
@@ -65,40 +86,193 @@
   background-color: var(--button-bg);
   color: var(--button-text);
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+  border-radius: 10px;
+  padding: 10px 16px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
 }
 
 .theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 16px -4px rgba(17,24,39,0.18);
+  opacity: 0.95;
 }
 
 .theme-toggle:active {
   transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Trips section */
+.trips-section {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-/* Responsive design for mobile */
+.trips-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.trips-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.trips-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.trips-loading,
+.trips-empty {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+
+.trips-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.trip-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.trip-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 16px 22px -6px rgba(37,99,235,0.18), 0 6px 10px -6px rgba(17,24,39,0.12);
+}
+
+.trip-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.trip-title {
+  font-size: 18px;
+  margin: 0;
+  color: var(--text);
+}
+
+.trip-dates {
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.trip-desc {
+  margin: 10px 0 14px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.trip-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.trips-cta {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-accent {
+  background: var(--secondary);
+  color: #111827;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.btn-accent:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive tweaks */
 @media (max-width: 768px) {
+  .App-header {
+    padding: 68px 16px 28px;
+  }
   .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
+    top: 12px;
+    right: 12px;
+    padding: 8px 14px;
     font-size: 12px;
+  }
+  .trips-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 }
