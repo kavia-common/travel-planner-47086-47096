@@ -8,7 +8,7 @@ import { ReminderService } from '../../services/ReminderService';
  * Displays a list of reminders and provides UI to add/edit/delete reminders.
  * Includes a modal-like inline panel with ReminderForm.
  */
-function RemindersPanel({ open = false, onClose }) {
+function RemindersPanel({ open = false, onClose, onOpenLanguage }) {
   const [reminders, setReminders] = useState([]);
   const [mode, setMode] = useState(null); // null | 'create' | 'edit'
   const [editing, setEditing] = useState(null);
@@ -107,6 +107,11 @@ function RemindersPanel({ open = false, onClose }) {
           <button type="button" className="btn-secondary" onClick={askPermission} title="Enable system notifications">
             Enable Notifications
           </button>
+          {onOpenLanguage ? (
+            <button type="button" className="btn-secondary" onClick={onOpenLanguage} title="Open Language Assistant">
+              🌐 Language
+            </button>
+          ) : null}
           <button type="button" className="btn-secondary" onClick={onClose} title="Close panel">Close</button>
         </div>
       </div>

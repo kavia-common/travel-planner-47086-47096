@@ -1,0 +1,176 @@
+{
+  "languages": [
+    { "code": "en", "name": "English" },
+    { "code": "es", "name": "Spanish" },
+    { "code": "fr", "name": "French" },
+    { "code": "hi", "name": "Hindi" }
+  ],
+  "categories": [
+    { "id": "greetings", "label": "Greetings" },
+    { "id": "directions", "label": "Directions" },
+    { "id": "dining", "label": "Dining" },
+    { "id": "emergencies", "label": "Emergencies" }
+  ],
+  "phrases": {
+    "greetings": [
+      {
+        "keys": ["hello"],
+        "en": "Hello",
+        "es": "Hola",
+        "fr": "Bonjour",
+        "hi": "नमस्ते"
+      },
+      {
+        "keys": ["good morning"],
+        "en": "Good morning",
+        "es": "Buenos días",
+        "fr": "Bonjour",
+        "hi": "सुप्रभात"
+      },
+      {
+        "keys": ["please"],
+        "en": "Please",
+        "es": "Por favor",
+        "fr": "S'il vous plaît",
+        "hi": "कृपया"
+      },
+      {
+        "keys": ["thank you", "thanks"],
+        "en": "Thank you",
+        "es": "Gracias",
+        "fr": "Merci",
+        "hi": "धन्यवाद"
+      },
+      {
+        "keys": ["excuse me", "pardon"],
+        "en": "Excuse me",
+        "es": "Perdón",
+        "fr": "Excusez-moi",
+        "hi": "माफ़ कीजिए"
+      }
+    ],
+    "directions": [
+      {
+        "keys": ["where is the bathroom", "toilet"],
+        "en": "Where is the bathroom?",
+        "es": "¿Dónde está el baño?",
+        "fr": "Où sont les toilettes ?",
+        "hi": "शौचालय कहाँ है?"
+      },
+      {
+        "keys": ["where is the hotel"],
+        "en": "Where is the hotel?",
+        "es": "¿Dónde está el hotel?",
+        "fr": "Où est l'hôtel ?",
+        "hi": "होटल कहाँ है?"
+      },
+      {
+        "keys": ["left"],
+        "en": "Left",
+        "es": "Izquierda",
+        "fr": "Gauche",
+        "hi": "बायाँ"
+      },
+      {
+        "keys": ["right"],
+        "en": "Right",
+        "es": "Derecha",
+        "fr": "Droite",
+        "hi": "दायाँ"
+      },
+      {
+        "keys": ["straight ahead"],
+        "en": "Straight ahead",
+        "es": "Todo recto",
+        "fr": "Tout droit",
+        "hi": "सीधे आगे"
+      }
+    ],
+    "dining": [
+      {
+        "keys": ["water"],
+        "en": "Water",
+        "es": "Agua",
+        "fr": "Eau",
+        "hi": "पानी"
+      },
+      {
+        "keys": ["menu"],
+        "en": "Menu",
+        "es": "Menú",
+        "fr": "Menu",
+        "hi": "मेन्यू"
+      },
+      {
+        "keys": ["bill", "check please"],
+        "en": "The bill, please.",
+        "es": "La cuenta, por favor.",
+        "fr": "L'addition, s'il vous plaît.",
+        "hi": "बिल, कृपया."
+      },
+      {
+        "keys": ["i am vegetarian", "vegetarian"],
+        "en": "I am vegetarian.",
+        "es": "Soy vegetariano/a.",
+        "fr": "Je suis végétarien(ne).",
+        "hi": "मैं शाकाहारी हूँ."
+      },
+      {
+        "keys": ["no spicy"],
+        "en": "Not spicy, please.",
+        "es": "Sin picante, por favor.",
+        "fr": "Pas épicé, s'il vous plaît.",
+        "hi": "मसालेदार नहीं, कृपया."
+      }
+    ],
+    "emergencies": [
+      {
+        "keys": ["help"],
+        "en": "Help!",
+        "es": "¡Ayuda!",
+        "fr": "À l'aide !",
+        "hi": "मदद!"
+      },
+      {
+        "keys": ["call the police", "police"],
+        "en": "Call the police.",
+        "es": "Llame a la policía.",
+        "fr": "Appelez la police.",
+        "hi": "पुलिस को बुलाइए."
+      },
+      {
+        "keys": ["hospital"],
+        "en": "Hospital",
+        "es": "Hospital",
+        "fr": "Hôpital",
+        "hi": "अस्पताल"
+      },
+      {
+        "keys": ["i need a doctor", "doctor"],
+        "en": "I need a doctor.",
+        "es": "Necesito un médico.",
+        "fr": "J'ai besoin d'un médecin.",
+        "hi": "मुझे डॉक्टर चाहिए."
+      },
+      {
+        "keys": ["i am lost", "lost"],
+        "en": "I am lost.",
+        "es": "Estoy perdido/a.",
+        "fr": "Je suis perdu(e).",
+        "hi": "मैं खो गया/गई हूँ."
+      }
+    ]
+  },
+  "dictionary": {
+    "hello": { "en": "Hello", "es": "Hola", "fr": "Bonjour", "hi": "नमस्ते" },
+    "please": { "en": "Please", "es": "Por favor", "fr": "S'il vous plaît", "hi": "कृपया" },
+    "thank you": { "en": "Thank you", "es": "Gracias", "fr": "Merci", "hi": "धन्यवाद" },
+    "water": { "en": "Water", "es": "Agua", "fr": "Eau", "hi": "पानी" },
+    "menu": { "en": "Menu", "es": "Menú", "fr": "Menu", "hi": "मेन्यू" },
+    "hotel": { "en": "Hotel", "es": "Hotel", "fr": "Hôtel", "hi": "होटल" },
+    "bathroom": { "en": "Bathroom", "es": "Baño", "fr": "Toilettes", "hi": "शौचालय" },
+    "left": { "en": "Left", "es": "Izquierda", "fr": "Gauche", "hi": "बायाँ" },
+    "right": { "en": "Right", "es": "Derecha", "fr": "Droite", "hi": "दायाँ" },
+    "help": { "en": "Help", "es": "Ayuda", "fr": "Aidez-moi", "hi": "मदद" }
+  }
+}

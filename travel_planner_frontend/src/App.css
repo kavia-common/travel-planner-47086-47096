@@ -496,6 +496,10 @@
   padding: 2px 8px;
   margin-right: 6px;
 }
+.pill.alt {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.3);
+}
 
 .activity-actions {
   display: flex;

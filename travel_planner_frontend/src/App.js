@@ -6,11 +6,13 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import RemindersPanel from './components/reminders/RemindersPanel';
 import Toasts from './components/reminders/Toasts';
 import { ReminderService } from './services/ReminderService';
+import LanguageHelper from './components/language/LanguageHelper';
 
 // PUBLIC_INTERFACE
 function App() {
   const [theme, setTheme] = useState('light');
   const [remindersOpen, setRemindersOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
 
   // Effect to apply theme to document element
@@ -70,7 +72,15 @@ function App() {
                   </Link>
                 </h1>
                 <p className="trips-subtitle">Plan trips with Ocean Professional theme</p>
-                <div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    type="button"
+                    className="btn-secondary"
+                    onClick={() => setLanguageOpen(true)}
+                    title="Open language helper"
+                  >
+                    🌐 Language
+                  </button>
                   <button
                     type="button"
                     className="btn-secondary"
@@ -87,12 +97,17 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<TripsList />} />
-              <Route path="/trips/:id/itinerary/new" element={<ItineraryBuilder />} />
+              <Route path="/trips/:id/itinerary/new" element={<ItineraryBuilder onOpenLanguage={() => setLanguageOpen(true)} />} />
             </Routes>
           </main>
         </header>
 
-        <RemindersPanel open={remindersOpen} onClose={() => setRemindersOpen(false)} />
+        <RemindersPanel
+          open={remindersOpen}
+          onClose={() => setRemindersOpen(false)}
+          onOpenLanguage={() => setLanguageOpen(true)}
+        />
+        <LanguageHelper open={languageOpen} onClose={() => setLanguageOpen(false)} />
         <Toasts items={toasts} onDismiss={dismissToast} />
       </div>
     </BrowserRouter>

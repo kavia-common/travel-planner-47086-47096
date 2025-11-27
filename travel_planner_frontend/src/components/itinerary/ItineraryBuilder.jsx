@@ -12,7 +12,7 @@ import DayPlanner from './DayPlanner';
  *
  * Route usage: /trips/:id/itinerary/new
  */
-function ItineraryBuilder() {
+function ItineraryBuilder({ onOpenLanguage }) {
   const { id: tripId } = useParams();
   const navigate = useNavigate();
 
@@ -106,10 +106,15 @@ function ItineraryBuilder() {
             <p className="trips-subtitle">No trip selected</p>
           )}
         </div>
-        <div className="builder-actions">
+        <div className="builder-actions" style={{ display: 'flex', gap: 8 }}>
           <button className="btn-secondary" type="button" onClick={() => navigate(-1)}>
             Back
           </button>
+          {onOpenLanguage ? (
+            <button className="btn-secondary" type="button" onClick={onOpenLanguage} title="Open Language Assistant">
+              🌐 Language
+            </button>
+          ) : null}
           <button className="btn-primary" type="button" onClick={onSave} disabled={!canSave}>
             Save Itinerary
           </button>
