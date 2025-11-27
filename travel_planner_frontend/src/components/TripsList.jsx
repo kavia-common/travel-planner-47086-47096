@@ -111,6 +111,13 @@ function TripsList() {
                 <button className="btn-secondary" type="button" title="Edit trip">
                   Edit
                 </button>
+                <a
+                  className="btn-secondary"
+                  href={`/trips/${trip.id ?? 1}/itinerary/new`}
+                  title="Create itinerary"
+                >
+                  + Itinerary
+                </a>
               </div>
             </li>
           ))}

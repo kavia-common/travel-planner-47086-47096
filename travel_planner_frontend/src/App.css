@@ -276,3 +276,228 @@
     gap: 6px;
   }
 }
+
+/* Itinerary Builder styles */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.builder-header,
+.builder-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.builder-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 24px;
+}
+
+.builder-form,
+.days-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-row > label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.field-row > input,
+.field-row > textarea,
+.field-row > select {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.field-row > input:focus,
+.field-row > textarea:focus,
+.field-row > select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.days-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.days-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.day-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.day-meta {
+  margin-bottom: 6px;
+}
+
+.day-actions-inline .stack-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.day-planner {
+  margin-top: 8px;
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.day-title {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.empty-day {
+  border: 1px dashed var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--muted);
+  background: rgba(37,99,235,0.03);
+}
+
+.activities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--surface);
+}
+
+.activity-main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.activity-times .time-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(37,99,235,0.18);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.time-badge.muted {
+  background: transparent;
+  border-color: var(--border-color);
+  color: var(--muted);
+}
+
+.activity-info .activity-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.activity-sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(37,99,235,0.08);
+  color: var(--text);
+  border: 1px solid rgba(37,99,235,0.18);
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-right: 6px;
+}
+
+.activity-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-secondary.small {
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.activity-form-wrap {
+  margin-top: 8px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 8px;
+}
+
+.activity-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* a11y */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
