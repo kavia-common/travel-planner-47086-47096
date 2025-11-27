@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/travel-planner-47086-47096/travel_planner_frontend"
+}
